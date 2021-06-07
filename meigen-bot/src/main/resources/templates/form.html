@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>名言App Alpha</title>
 </head>
 <body>
-
+	<h3>名言を登録しよう</h3>
+		<form th:action="@{/add}" th:object="${meigen}" method="post">
+		<label for="content">名言：</label>
+		<input type="text" th:field="*{content}"><br>
+		
+		<label for="date">日付：</label>
+		<input type="date" th:field="*{date}"><br>
+		
+		<label for="userRegi">名前：</label>
+		<input type="text" th:field="*{userRegi}"><br>
+		
+		
+		<button>登録</button>
+		</form>
+		
+		<br>
+		  <h3>一覧	</h3>
+		<div th:each="meigen:${meigens}">
+			<div>[[${meigen.content}]] - [[${meigen.date}]] - [[${meigen.userRegi}]]</div>
+		
+		</div>
+		
 </body>
 </html>

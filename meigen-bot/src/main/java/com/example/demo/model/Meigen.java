@@ -27,7 +27,7 @@ public class Meigen {
 	
 	@NotBlank
 	@Size(max = 100)
-	private String meigen; //名言本文
+	private String content; //名言本文
 	
 	@NotNull
 	@DateTimeFormat(iso = ISO.DATE)
