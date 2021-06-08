@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.model.Meigen;
 import com.example.demo.repository.MeigenRepository;
@@ -36,6 +37,12 @@ public class MeigenController {
 		}
 		
 		repository.save(meigen);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteMeigen(@PathVariable Long id) {
+		repository.deleteById(id);
 		return "redirect:/";
 	}
 	
