@@ -10,8 +10,7 @@
 		<label for="content">名言：</label>
 		<input type="text" th:field="*{content}"><br>
 		
-		<label for="date">日付：</label>
-		<input type="date" th:field="*{date}"><br>
+		
 		
 		
 		
@@ -28,13 +27,23 @@
 		
 		<br>
 		  <h3>一覧	</h3>
-		<div th:each="meigen:${meigens}">
-			<div>[[${meigen.id}]] - [[${meigen.content}]] - [[${meigen.userRegi}]] - [[${meigen.date}]]</div>
-			
-			<a th:href="@{/delete/{id}(id=${meigen.id})}">
-			 削除
-			</a>
-		</div>
+		<table>  
+			<tr th:each="meigen:${meigens}" th:object="${meigen}">
+				<td>[[*{id}]] - [[*{content}]] - [[*{userRegi}]] - [[*{date}]]</td>
+				<td>
+					<form th:action="@{/edit}" method="get">
+						<input type="submit" value="編集">
+						<input type="hidden" name="id" th:value="*{id}">
+					</form>
+				</td>
+				<td>
+					<form th:action="@{/delete}" method="post">
+						<input type="submit" value="削除">
+						<input type="hidden" name="id" th:value="*{id}">
+					</form>
+				</td>
+			</tr>
+		</table>
 		
 </body>
 </html>

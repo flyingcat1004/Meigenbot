@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>名言編集</title>
+</head>
+<body>
+	<form th:action="@{/edit}" th:object="${meigenForm}" method="post">
+		<h1>[[*{content}]] - [[*{userRegi}]]</h1>
+		<h1>[[${param.id[0]}]]</h1>
+		<input type="text" th:field="*{content}">
+		
+		<input type="text" th:field="*{userRegi}">
+		
+		<input type="hidden" name="id" th:value="${param.id[0]}">
+		<button>ok</button>
+	</form>
+</body>
+</html>
